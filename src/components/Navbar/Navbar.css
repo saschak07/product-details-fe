@@ -1,0 +1,7 @@
+.navbar-fonts{
+    font-size: 80%;
+}
+.drop-downContent{
+    overflow: scroll;
+    max-height: 500px;
+}
