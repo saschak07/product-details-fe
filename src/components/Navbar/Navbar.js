@@ -4,6 +4,7 @@ const Navbar = (props) => {
     const [catagory,setCatagory] = useState(null)
     const [location,setLocation] = useState(null)
     const [supplier,setSupplier] = useState(null)
+    const [keyword,setKeyword] = useState(null)
 
     const handleSelection = (type,value) => {
         switch(type){
@@ -20,6 +21,18 @@ const Navbar = (props) => {
                 break
         }
         props.selectFilteres(type,value)
+    }
+
+    const handleKeyWordEnter = (value) =>{
+        setKeyword(value)
+    }
+    const handleSearch = () => {
+        if(keyword){
+            props.selectFilteres('title',keyword)
+        }
+        else{
+            alert('Enter a search key word')
+        }
     }
 
     const categories = Array.from(props.categories).map(data => {
@@ -52,7 +65,9 @@ const Navbar = (props) => {
     return (
         <div className="w3-bar w3-white">
         <span className="navbar-fonts">
-        <input type="text" className="w3-bar-item w3-input" placeholder="Enter search keyword"/>
+        <input type="text" className="w3-bar-item w3-input" placeholder="Enter search keyword"
+        onChange={event=>handleKeyWordEnter(event.target.value)}
+        />
         <i className="w3-bar-item fa fa-search"></i>
         <div className="w3-dropdown-hover">
             <button className="w3-button">Select category <i className="arrow down"></i></button>
@@ -85,7 +100,7 @@ const Navbar = (props) => {
         </div>
         <i className="w3-bar-item"><input type="checkbox"/> Premium products </i>
         <button className="w3-bar-item w3-button w3-purple"
-        onClick={event=>props.search()}
+        onClick={event=>handleSearch()}
         >Search</button>
         </span>
       </div> 
