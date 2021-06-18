@@ -5,6 +5,7 @@ const Navbar = (props) => {
     const [location,setLocation] = useState(null)
     const [supplier,setSupplier] = useState(null)
     const [keyword,setKeyword] = useState(null)
+    const [priceFiler,setPriceFilter] = useState(null)
 
     const handleSelection = (type,value) => {
         switch(type){
@@ -16,6 +17,9 @@ const Navbar = (props) => {
                 break
             case 'supplier_name': 
                 setSupplier(value)
+                break
+            case 'price':
+                setPriceFilter(value)
                 break
             default:
                 break
@@ -78,10 +82,16 @@ const Navbar = (props) => {
         </div>
         <div className="w3-dropdown-hover">
             <button className="w3-button">Price filter <i className="arrow down"></i></button>
-            <div className=" w3-dropdown-content drop-downContent w3-bar-block w3-card-4">
-                <i className="w3-bar-item w3-button"> <input type="checkbox"/> Link 1</i>
-                <i className="w3-bar-item w3-button"> <input type="checkbox"/> Link 2</i>
-                <i className="w3-bar-item w3-button"> <input type="checkbox"/> Link 3</i>
+            <div className=" w3-dropdown-content drop-downContent w3-bar-block w3-card-4"
+            onChange={event=>handleSelection("price",event.target.value)}>
+                <i className="w3-bar-item w3-button"> 
+                <input type="radio" checked={priceFiler==='max'}
+                            value ='max'
+                            name = 'max'/>max</i>
+                <i className="w3-bar-item w3-button"> 
+                <input type="radio" checked={priceFiler==='min'}
+                            value ='min'
+                            name = 'min'/>min</i>
             </div>
         </div>
         <div className="w3-dropdown-hover">
