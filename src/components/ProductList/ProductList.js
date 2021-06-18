@@ -14,19 +14,22 @@ const ProductList = (props) => {
     const [offset,setOffset] = useState(0)
     const [currentPage,setCurrentPage] = useState(0)
     const [query,setQuery] = useState({})
+    const [pageCount,setPageCount] = useState(0)
 
 
     useEffect(() => {
         loadData()
-    },[])
+    },[offset,currentPage,query])
 
     const loadData = () => {
         axios.get('http://localhost:9000/spocket/items',{
             params: query
         })
         .then((res) => {
+            console.log(`offset:${offset} & currentPage:${currentPage}`)
             const paginatedProducts = res.data.slice(offset,offset+perPage)
             setProductList(paginatedProducts)
+            setPageCount(res.data.length/perPage)
             loadFilterOptions(res.data)
         })
         .catch(error => console.log(error))
@@ -40,16 +43,15 @@ const ProductList = (props) => {
         setSuppliers(supplierList)
     }
     const handlePageClick = (e) => {
+        console.log(`handleClick input:${e.selected}`)
         const selectedPage = e.selected;
         const offset = selectedPage * perPage;
 
         setOffset(offset)
-        setCurrentPage(currentPage)
-        loadData()
+        setCurrentPage(selectedPage)
     }
 
     const handleSelectFileters = (filterType,value) => {
-        console.log(`filter type:${filterType} & value:${value}`)
         let newQuery = {...query}
         if(filterType in newQuery && newQuery[filterType]===value){
             delete newQuery[filterType]
@@ -61,8 +63,10 @@ const ProductList = (props) => {
     }
 
     const handleSearch = () => {
-
-        loadData()
+         loadData()
+    }
+    const handleClearSearch = () =>{
+        window.location.reload()
     }
     //revist this logic
     const productRowList = []
@@ -75,12 +79,18 @@ const ProductList = (props) => {
         productList.push(productList.slice(productList.length-count,
             productList.length))
     }
-    console.log(productRowList)
     const rowData = productRowList.map(element =>{
         return(<ProductRow key={productRowList.indexOf(element)}
         row = {element}
         />)
     } )
+    const showClearSearch = Object.keys(query).length!==0?
+    <span className="navbar-fonts">
+    <button className="w3-bar-item w3-button w3-purple search-style"
+    onClick={event=>handleClearSearch()}
+    > clear search X</button>
+    </span>    
+    :null
     return(<div>
         <div className="mast-head ">
         <h2>Search for products</h2>
@@ -91,18 +101,25 @@ const ProductList = (props) => {
                 query = {query}
                 search = {handleSearch}
                 />
+        <div className="w3-cell-row row-container">
+        <div className="w3-cell w3-container col-container w3-center">
         <ReactPaginate
                     previousLabel={"prev"}
                     nextLabel={"next"}
                     breakLabel={"..."}
                     breakClassName={"break-me"}
-                    pageCount={perPage}
+                    pageCount={pageCount}
                     marginPagesDisplayed={2}
                     pageRangeDisplayed={5}
                     onPageChange={handlePageClick}
                     containerClassName={"pagination"}
                     subContainerClassName={"pages pagination"}
-                    activeClassName={"active"}/> 
+                    activeClassName={"active"}/>
+                    </div> 
+                    <div className="w3-cell w3-container col-container w3-center">
+        {showClearSearch}
+        </div>
+        </div>
         </div>       
         <div className="product-content">
             {rowData}
