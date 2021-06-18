@@ -58,6 +58,11 @@ const ProductList = (props) => {
             setQuery(newQuery)
             return
         }
+        if(filterType==='premium' && !value){
+            delete newQuery[filterType]
+            setQuery(newQuery)
+            return
+        }
         newQuery[filterType] = value
         setQuery(newQuery)
     }

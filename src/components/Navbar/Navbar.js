@@ -6,6 +6,7 @@ const Navbar = (props) => {
     const [supplier,setSupplier] = useState(null)
     const [keyword,setKeyword] = useState(null)
     const [priceFiler,setPriceFilter] = useState(null)
+    const [isPremium,setIsPremium] = useState(false)
 
     const handleSelection = (type,value) => {
         switch(type){
@@ -21,10 +22,13 @@ const Navbar = (props) => {
             case 'price':
                 setPriceFilter(value)
                 break
+            case 'premium':
+                setIsPremium(value)
+                break
             default:
                 break
         }
-        props.selectFilteres(type,value)
+            props.selectFilteres(type,value)
     }
 
     const handleKeyWordEnter = (value) =>{
@@ -108,7 +112,9 @@ const Navbar = (props) => {
                 {suppliers}
             </div>
         </div>
-        <i className="w3-bar-item"><input type="checkbox"/> Premium products </i>
+        <i className="w3-bar-item"><input type="checkbox"
+        onChange={event=>handleSelection('premium',!isPremium)}
+        /> Premium products </i>
         <button className="w3-bar-item w3-button w3-purple"
         onClick={event=>handleSearch()}
         >Search</button>
