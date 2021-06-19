@@ -1,5 +1,6 @@
 import React,{useState} from 'react'
 import './Navbar.css'
+import countries from '../util/ShipToCountry'
 const Navbar = (props) => {
     const [catagory,setCatagory] = useState(null)
     const [location,setLocation] = useState(null)
@@ -7,6 +8,8 @@ const Navbar = (props) => {
     const [keyword,setKeyword] = useState(null)
     const [priceFiler,setPriceFilter] = useState(null)
     const [isPremium,setIsPremium] = useState(false)
+    const [shipto,setShipto] = useState(null)
+    const [sortBy,setSortBy] = useState(null)
 
     const handleSelection = (type,value) => {
         switch(type){
@@ -25,6 +28,11 @@ const Navbar = (props) => {
             case 'premium':
                 setIsPremium(value)
                 break
+            case 'ship_to':
+                setShipto(value)
+                break
+            case 'sortBy':
+                setSortBy(value)
             default:
                 break
         }
@@ -42,11 +50,17 @@ const Navbar = (props) => {
             alert('Enter a search key word')
         }
     }
-
+    const shipToCountries = countries.sort().map(data => {
+        return(<i key={data} 
+        className="w3-bar-item w3-button"> <input type="radio"
+        checked={shipto===data}
+        value ={data}
+        name = {data}
+        />{data}</i>)
+    })
     const categories = Array.from(props.categories).map(data => {
         return(<i key={Array.from(props.categories).indexOf(data)} 
         className="w3-bar-item w3-button"> <input type="radio"
-        //onChange={event=>props.selectFilteres("category_name",data)}
         checked={catagory===data}
         value ={data}
         name = {data}
@@ -55,7 +69,6 @@ const Navbar = (props) => {
     const suppliers = Array.from(props.suppliers).map(data => {
         return(<i key={Array.from(props.suppliers).indexOf(data)} 
         className="w3-bar-item w3-button"> <input type="radio"
-        //onClick={event=>props.selectFilteres("supplier_name",data)}
         checked = {supplier===data}
         value ={data}
         name = {data}
@@ -64,7 +77,6 @@ const Navbar = (props) => {
     const locations = Array.from(props.locations).map(data => {
         return(<i key={Array.from(props.locations).indexOf(data)} 
         className="w3-bar-item w3-button"> <input type="radio"
-        //onClick={event=>props.selectFilteres("country_origin",data)}
         checked = {location===data}
         value ={data}
         name = {data}
@@ -106,10 +118,32 @@ const Navbar = (props) => {
             </div>
         </div>
         <div className="w3-dropdown-hover">
+            <button className="w3-button">Ship to location <i className="arrow down"></i></button>
+            <div className=" w3-dropdown-content drop-downContent w3-bar-block w3-card-4"
+            onChange={event=>handleSelection("ship_to",event.target.value)}>
+                {shipToCountries}
+            </div>
+        </div>
+        
+        <div className="w3-dropdown-hover">
             <button className="w3-button">Select supplier <i className="arrow down"></i></button>
             <div className=" w3-dropdown-content drop-downContent w3-bar-block w3-card-4"
             onChange={event=>handleSelection("supplier_name",event.target.value)}>
                 {suppliers}
+            </div>
+        </div>
+        <div className="w3-dropdown-hover">
+            <button className="w3-button">Sort by price<i className="arrow down"></i></button>
+            <div className=" w3-dropdown-content drop-downContent w3-bar-block w3-card-4"
+            onChange={event=>handleSelection("sortBy",event.target.value)}>
+                <i className="w3-bar-item w3-button"> 
+                <input type="radio" checked={sortBy==='high'}
+                            value ='high'
+                            name = 'high'/>High to low</i>
+                <i className="w3-bar-item w3-button"> 
+                <input type="radio" checked={sortBy==='low'}
+                            value ='low'
+                            name = 'low'/>Low to High</i>
             </div>
         </div>
         <i className="w3-bar-item"><input type="checkbox"
@@ -117,7 +151,7 @@ const Navbar = (props) => {
         /> Premium products </i>
         <button className="w3-bar-item w3-button w3-purple"
         onClick={event=>handleSearch()}
-        >Search</button>
+        >Search</button>  
         </span>
       </div> 
     )

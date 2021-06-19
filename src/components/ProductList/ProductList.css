@@ -29,14 +29,15 @@
   .mast-head{
     position: fixed;
     background-color: rgb(246, 243, 243);
-    width: 80%;
-    margin-left: 5%;
+    width: 91%;
+    margin-left: 2%;
+    height: 180px;
     }
   .product-content{
     display: inline-block;
     margin-left: 5%;
-    margin-top: 15%;
-    width: 78%
+    margin-top: 13%;
+    width: 90%
   }
   .search-style{
     margin-top: 9px;
