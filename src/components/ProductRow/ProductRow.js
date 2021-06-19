@@ -9,6 +9,10 @@ const productRow = props.row.map(data => {
         <ProductCard key={data._id}
             img = {data.image_cover_url}
             name = {data.title}
+            supplier_name = {data.supplier_name}
+            country_origin = {data.country_origin}
+            formatted_msrp = {data.formatted_msrp}
+            formatted_price = {data.formatted_price}
         />
     </div>:null)
 })

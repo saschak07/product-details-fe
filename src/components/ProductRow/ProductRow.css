@@ -5,3 +5,7 @@
 .col-container{
     width: 550px;
 }
+.flag-margin{
+    margin-left: 2px;
+    margin-right: 2px;
+}

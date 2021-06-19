@@ -76,9 +76,9 @@ const ProductList = (props) => {
     //revist this logic
     const productRowList = []
     let count = 0
-    while (count+3 <= productList.length){
-        productRowList.push(productList.slice(count,count+3))
-        count+=3
+    while (count+4 <= productList.length){
+        productRowList.push(productList.slice(count,count+4))
+        count+=4
     }
     if(count<productList.length){
         productList.push(productList.slice(productList.length-count,
