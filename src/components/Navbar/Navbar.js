@@ -1,6 +1,12 @@
 import React,{useState} from 'react'
 import './Navbar.css'
 import countries from '../util/ShipToCountry'
+/**
+ * Navigation bar component that enables all search functionality
+ * and filtering options
+ * @param {*} props 
+ * @returns 
+ */
 const Navbar = (props) => {
     const [catagory,setCatagory] = useState(null)
     const [location,setLocation] = useState(null)
@@ -10,7 +16,14 @@ const Navbar = (props) => {
     const [isPremium,setIsPremium] = useState(false)
     const [shipto,setShipto] = useState(null)
     const [sortBy,setSortBy] = useState(null)
-
+    /**
+     * single selection handler for all kinds of filtering
+     * on the product catalog, this method feeds the user selection of the 
+     * different filters to the product list component to build the search 
+     * query on the back-end
+     * @param {*} type 
+     * @param {*} value 
+     */
     const handleSelection = (type,value) => {
         switch(type){
             case 'category_name': 
@@ -42,6 +55,11 @@ const Navbar = (props) => {
     const handleKeyWordEnter = (value) =>{
         setKeyword(value)
     }
+    /**
+     * method to enable search based on product title,
+     * method gets invoked on click of search button with 
+     * title entered at the keyword search text input
+     */
     const handleSearch = () => {
         if(keyword){
             props.selectFilteres('title',keyword)
@@ -50,6 +68,10 @@ const Navbar = (props) => {
             alert('Enter a search key word')
         }
     }
+    /**
+     * preparing the filter drop down options
+     * based on the response received from back-end
+     */
     const shipToCountries = countries.sort().map(data => {
         return(<i key={data} 
         className="w3-bar-item w3-button"> <input type="radio"

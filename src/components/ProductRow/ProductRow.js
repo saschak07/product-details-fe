@@ -1,7 +1,12 @@
 import React from 'react'
 import ProductCard from '../ProductCard/ProductCard'
 import './ProductRow.css'
-
+/**
+ * Functional component to enable each product rows
+ * 
+ * @param {*} props 
+ * @returns 
+ */
 const ProductRow = (props) => {
 
 const productRow = props.row.map(data => {

@@ -1,6 +1,12 @@
 import React from 'react'
 import './ProductCard.css'
 import getFlag from '../util/CountryFlag'
+/**
+ * product component to display each individual 
+ * product description
+ * @param {*} props 
+ * @returns 
+ */
 const ProductCard = (props) => {
     const premium = props.premium?<p className='premium-text'>Premium product</p>:null
 return (

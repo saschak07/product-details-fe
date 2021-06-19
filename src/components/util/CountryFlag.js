@@ -1,3 +1,9 @@
+/**
+ * util component to display flags for an input country name
+ * used to populate country of origin on the product details card
+ * @param {*} countryName 
+ * @returns 
+ */
 const getFlag = (countryName) => {
     switch(countryName){
         case 'United States': return '🇺🇸';
@@ -10,6 +16,7 @@ const getFlag = (countryName) => {
         case 'China': return '🇨🇳';
         case 'Lithuania': return '🇱🇹';
         case 'Ireland': return '🇮🇪';
+        default: return null;
 
     }
 }

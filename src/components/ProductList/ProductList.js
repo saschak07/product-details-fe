@@ -5,6 +5,12 @@ import Navbar from '../Navbar/Navbar'
 import ReactPaginate from 'react-paginate';
 import './ProductList.css'
 
+/**
+ * Functional component to load all products from the 
+ * backend, shoot queries to the backend based on the input filters
+ * @param {*} props 
+ * @returns 
+ */
 const ProductList = (props) => {
     const [productList,setProductList] = useState([])
     const [categories,setCatagories] = useState([])
@@ -34,6 +40,11 @@ const ProductList = (props) => {
         })
         .catch(error => console.log(error))
     }
+    /**
+     * Loading filter options dynamically from the 
+     * backend response, gets updated every time the states are updated
+     * @param {*} products 
+     */
     const loadFilterOptions = (products) => {
         const catagoryList = new Set(products.map(data => data.category_name))
         setCatagories(catagoryList)
@@ -73,7 +84,6 @@ const ProductList = (props) => {
     const handleClearSearch = () =>{
         window.location.reload()
     }
-    //revist this logic
     const productRowList = []
     let count = 0
     while (count+4 <= productList.length){
