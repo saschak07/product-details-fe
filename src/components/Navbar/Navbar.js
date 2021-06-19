@@ -99,7 +99,7 @@ const Navbar = (props) => {
             </div>
         </div>
         <div className="w3-dropdown-hover">
-            <button className="w3-button">Select by location <i className="arrow down"></i></button>
+            <button className="w3-button">Ship From location <i className="arrow down"></i></button>
             <div className=" w3-dropdown-content drop-downContent w3-bar-block w3-card-4"
             onChange={event=>handleSelection("country_origin",event.target.value)}>
                 {locations}

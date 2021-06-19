@@ -13,6 +13,7 @@ const productRow = props.row.map(data => {
             country_origin = {data.country_origin}
             formatted_msrp = {data.formatted_msrp}
             formatted_price = {data.formatted_price}
+            premium = {data.premium}
         />
     </div>:null)
 })

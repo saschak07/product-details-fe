@@ -2,6 +2,7 @@ import React from 'react'
 import './ProductCard.css'
 import getFlag from '../util/CountryFlag'
 const ProductCard = (props) => {
+    const premium = props.premium?<p className='premium-text'>Premium product</p>:null
 return (
     <div className = "product-card">
         <div className="w3-card-4 product-img">
@@ -16,6 +17,7 @@ return (
                     <p className='price'>Price (usd): {props.formatted_price}</p>
                     <p className='retail-price'>Retail Price (usd): {props.formatted_msrp}</p>
                 </span>
+                {premium}
             </div>
         </div>
      </div>    
