@@ -6,7 +6,7 @@ Basic product search system to filter and display the product catalog in a pagin
 
 **Few notes about the application**
 
-This above screen-shot is a representation the "search for product" landing page. which by default displays all available products from the database. 
+The above screen-shot is a representation of the "search for product" landing page. which by default displays all available products from the database. 
 From the navigation pane, title , catogory, price - min/max, ship from and ship to countries, suppliers, premium products etc. can be filtered, and all the filter options listed above, gets auto populated with responses received from the previous filters. To clear all the filters, `clear search` button must be clicked.
 
 To search with a product title, any part of the title can be inserted in the keyword search text input box and `search` button must be clicked. The result will display all products having the searched keyword as part of their title in a case insensitive manner.
