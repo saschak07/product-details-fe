@@ -1,4 +1,4 @@
-# Prduct search application
+# Product search application
 
 Basic product search system to filter and display the product catalog in a paginated manner
 
