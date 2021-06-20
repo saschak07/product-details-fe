@@ -15,6 +15,8 @@ The displayed results are sorted by price low to high by default unless sort by 
 
 The application also supports pagination, with 24 items on each page and 4 items in a row.
 
+Test cases pertaining to the search API has been included in the backend segment with detailed instructions to run them.
+
 **Tech stack**
 
 * React.js
