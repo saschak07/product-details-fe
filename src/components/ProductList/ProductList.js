@@ -28,7 +28,7 @@ const ProductList = (props) => {
     },[offset,currentPage,query])
 
     const loadData = () => {
-        axios.get('http://localhost:9000/spocket/items',{
+        axios.get('https://product-details-spock.herokuapp.com/spocket/items',{
             params: query
         })
         .then((res) => {
