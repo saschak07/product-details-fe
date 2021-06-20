@@ -4,6 +4,7 @@ import axios from 'axios'
 import Navbar from '../Navbar/Navbar'
 import ReactPaginate from 'react-paginate';
 import './ProductList.css'
+import { Product_url } from '../util/ProductEndpoints';
 
 /**
  * Functional component to load all products from the 
@@ -28,7 +29,7 @@ const ProductList = (props) => {
     },[offset,currentPage,query])
 
     const loadData = () => {
-        axios.get('http://localhost:9000/spocket/items',{
+        axios.get(Product_url,{
             params: query
         })
         .then((res) => {
