@@ -1,70 +1,60 @@
-# Getting Started with Create React App
+# Prduct search application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Basic product search system to filter and display the product catalog on paginated manner
 
-## Available Scripts
+![searchPage](https://github.com/saschak07/image-store/blob/main/Screenshot%202021-06-20%20at%208.32.50%20PM.png)
 
-In the project directory, you can run:
+This is a screen-shot of the "search for product" page. which by default displays all available products. From the navigation pane,  keyword search , catogory, price - min/max, ship from and ship to countries, suppliers, premium products can be filtered and all the filter options gets auto populated with responses received from the previous filters. To clear all the filters, `clear search` button must be clicked.
 
-### `npm start`
+To search with a product title, the part of the title can be inserted in the keyword search text input box and `search` button must be clicked. The result will display all products having the searched keyword as part of their title in a case insensitive manner.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+The application also supports pagination, with 24 items on each page and 4 items in a row.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+**Tech stack**
 
-### `npm test`
+* React.js
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+* axios
 
-### `npm run build`
+**Back end**
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+* Node.js
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+* Express
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+* Mongoose on MongoDB
 
-### `npm run eject`
+Link to backend repository: https://github.com/saschak07/product-details-be#back-end-for-product-details-search-page
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Live link: application has also been deployed at heroku .
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+https://product-fe-spock.herokuapp.com/
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+N.B.: The application takes a while to load both the backend and the front end for the first time, as those are deployed on heroku free dynos.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+**How to start the application on local?**
 
-## Learn More
+* Start the node.js backend. to do that kindly follow the instructions as laid out here -> https://github.com/saschak07/product-details-be#back-end-for-product-details-search-page
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+* Point the backend search api's base url to the local instance. to do that, reach out to the below file in the project directory:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+`spocket-fe/src/components/util/ProductEndpoints.js`
 
-### Code Splitting
+Insert the base url of the product search end point exposed by the backend 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```
+export const Product_url = 'http://localhost:9000/spocket/items'
 
-### Analyzing the Bundle Size
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+To start the dev instance on local, go to project directory and execute command:
 
-### Making a Progressive Web App
+```
+npm install
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+npm start
 
-### Advanced Configuration
+```
+N.B.: Node and npm should be preinstalled.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
