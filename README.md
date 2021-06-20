@@ -1,12 +1,14 @@
 # Prduct search application
 
-Basic product search system to filter and display the product catalog on paginated manner
+Basic product search system to filter and display the product catalog in a paginated manner
 
 ![searchPage](https://github.com/saschak07/image-store/blob/main/Screenshot%202021-06-20%20at%208.32.50%20PM.png)
 
-This is a screen-shot of the "search for product" page. which by default displays all available products. From the navigation pane,  keyword search , catogory, price - min/max, ship from and ship to countries, suppliers, premium products can be filtered and all the filter options gets auto populated with responses received from the previous filters. To clear all the filters, `clear search` button must be clicked.
+This is a screen-shot of the "search for product" page. which by default displays all available products. From the navigation pane title , catogory, price - min/max, ship from and ship to countries, suppliers, premium products can be filtered and all the filter options gets auto populated with responses received from the previous filters. To clear all the filters, `clear search` button must be clicked.
 
-To search with a product title, the part of the title can be inserted in the keyword search text input box and `search` button must be clicked. The result will display all products having the searched keyword as part of their title in a case insensitive manner.
+To search with a product title, any part of the title can be inserted in the keyword search text input box and `search` button must be clicked. The result will display all products having the searched keyword as part of their title in a case insensitive manner.
+
+The displayed results are sorted by price low to high by default unless sort by price filter is selected for "High to Low"
 
 The application also supports pagination, with 24 items on each page and 4 items in a row.
 
